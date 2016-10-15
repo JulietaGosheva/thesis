@@ -27,6 +27,17 @@ Route::get('/registration', function () {
     return view('registration.index');
 });
 
+
+Route::get('/users/edit', 'Users@loadEditView');
+
+Route::post('/users/edit', 'Users@editUser');
+Route::post('/users/registration', 'Users@createUser');
+
+Route::get('/dishes/view', 'Dishes@loadDishView');
+Route::post('/dishes/create', 'Dishes@createDish');
+Route::post('/dishes/edit', 'Dishes@editDish');
+Route::post('/dishes/delete', 'Dishes@deleteDishById');
+
 Route::get('/about_us', function () {
     return view('about_us.index');
 });

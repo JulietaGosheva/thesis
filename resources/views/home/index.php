@@ -13,7 +13,6 @@
 	</div>		
 </section>
 
-
 <!-- gallery section -->
 <section id="gallery" class="parallax-section">
 	<div class="container">
