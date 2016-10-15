@@ -17,14 +17,14 @@ class Users extends Controller {
 		
 		$validator = Validator::make($data, [
 				'email' => 'required|email|max:255|unique:users',
-				'password' => 'required|min:6|confirmed',
+				'password' => 'required|min:6',
 				'firstname' => 'required|min:1|max:255',
 				'lastname' => 'required|min:1|max:255',
 				'phone' => 'required|min:3|max:255',
 		]);;
 	
 		if ($validator->fails()) {
-			return view('users.create', ['errors' => $validator->errors()->all()]);
+			return view('users.registration', ['errors' => $validator->errors()->all()]);
 		}
 	
 		$user = User::create([
@@ -32,14 +32,14 @@ class Users extends Controller {
 			'password' => bcrypt($data['password']),
 			'firstname' => $data['firstname'],
 			'lastname' => $data['lastname'],
-			'phone' => $phone['phone']
+			'phone' => $data['phone']
 		]);
 
 		if ($user === null) {
-			return view('users.create', ['errors' => ['Failed to create user.']]);
+			return view('users.registration', ['errors' => ['Failed to create user.']]);
 		}
 		
-		return view('users.create', ['success' => 'Successfully created user.']);
+		return view('users.registration', ['success' => 'Successfully created user.']);
 	}
 	
 	public function editUser(Request $request, Response $response) {

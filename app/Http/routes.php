@@ -10,13 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-//
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 Route::get('/', function () {
     return view('home.index');
+});
+
+Route::get('/about_us', function () {
+    return view('about_us.index');
 });
 
 Route::get('/login', function () {
@@ -27,8 +27,10 @@ Route::get('/registration', function () {
     return view('registration.index');
 });
 
-
 Route::get('/users/edit', 'Users@loadEditView');
+Route::get('/users/registration', function() {
+	return view('users.registration');
+});
 
 Route::post('/users/edit', 'Users@editUser');
 Route::post('/users/registration', 'Users@createUser');
@@ -38,13 +40,6 @@ Route::post('/dishes/create', 'Dishes@createDish');
 Route::post('/dishes/edit', 'Dishes@editDish');
 Route::post('/dishes/delete', 'Dishes@deleteDishById');
 
-Route::get('/about_us', function () {
-    return view('about_us.index');
-});
-//Route::group(['midelware'] => ['web']], function {} {
-//    Route::get('/login', ['as' => 'login', 'users' => 'AuthController@login']);
-//    Route::get()
-//}
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -57,5 +52,5 @@ Route::get('/about_us', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
 });

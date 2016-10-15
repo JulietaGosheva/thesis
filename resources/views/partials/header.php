@@ -21,12 +21,12 @@
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.php" class="smoothScroll">НАЧАЛО</a></li>
+				<li><a href="<?php URL::to('index.php'); ?>" class="smoothScroll">НАЧАЛО</a></li>
 				<li><a href="about_us" class="smoothScroll">ЗА НАС</a></li>
 				<li><a href="#menu" class="smoothScroll">НАПРАВИ СИ МЕНЮ</a></li>
 				<li><a href="#team" class="smoothScroll">ПОРЪЧАЙ</a></li>
 				<li><a href="#contact" class="smoothScroll">КОНТАКТИ</a></li>
-                                <li><a href="login" class="smoothScroll">Вход</a><li><a href="javascript:;" class="smoothScroll">/</a></li><li><a href="registration" class="smoothScroll">Регистрация</a></li></li>
+				<li><a href="<?php URL::to('login'); ?>" class="smoothScroll">Вход</a><li><a href="javascript:;" class="smoothScroll">/</a></li><li><a href="registration" class="smoothScroll">Регистрация</a></li></li>
 			</ul>
 		</div>
 	</div>

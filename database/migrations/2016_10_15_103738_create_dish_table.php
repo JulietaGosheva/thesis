@@ -19,8 +19,7 @@ class CreateDishTable extends Migration
             $table->string('description');
             $table->string('image_name');
             $table->float('price');
-            $table->enum('type', ['Супа', 'Основно', 'Десерт', 'Салата']);
-            
+            $table->enum('type', ['Soup', 'Main', 'Dessert', 'Salat']);
         });
     }
 

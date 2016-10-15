@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dishes extends Model
 {
-    protected $timestamps = false;
+    public $timestamps = false;
+    
+    public $fillable = [
+    	'name', 'weight', 'description', 'image_name', 'price', 'type'
+    ];
 }

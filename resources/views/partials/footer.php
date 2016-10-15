@@ -34,13 +34,14 @@
 </footer>
 
 <!-- JAVASCRIPT JS FILES -->	
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.parallax.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/nivo-lightbox.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/custom.js"></script>
+
+<script src="<?php echo URL::to('js/jquery.js'); ?>"></script>
+<script src="<?php echo URL::to('js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo URL::to('js/jquery.parallax.js'); ?>"></script>
+<script src="<?php echo URL::to('js/smoothscroll.js'); ?>"></script>
+<script src="<?php echo URL::to('js/nivo-lightbox.min.js'); ?>"></script>
+<script src="<?php echo URL::to('js/wow.min.js'); ?>"></script>
+<script src="<?php echo URL::to('js/custom.js'); ?>"></script>
 
 </body>
 </html>
