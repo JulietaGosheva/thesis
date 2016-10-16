@@ -29,45 +29,33 @@ Route::get('/registration', function () {
     return view('registration.index');
 });
 
-Route::post('/order', ['middleware' => ['web'], 'uses' => 'Orders@createOrder']);
+Route::get('/logout', 'Logout@logout');
 
-Route::get('/users/edit', 'Users@loadEditView');
+Route::post('/order', ['middleware' => ['web', 'auth'], 'uses' => 'Orders@createOrder']);
+
+Route::get('/users/edit', ['middleware' => ['web', 'auth'], 'uses' => 'Users@loadEditView']);
 Route::get('/users/registration', function() {
 	return view('users.registration');
 });
 
-Route::post('/users/edit', 'Users@editUser');
+Route::post('/users/edit', ['middleware' => ['web', 'auth'], 'uses' => 'Users@editUser']);
 Route::post('/users/registration', 'Users@createUser');
 
 Route::get('/dishes/review', 'Dishes@loadDishView');
 Route::get('/dishes/creation', function() {
 	return view('dishes.creation');
-});
-Route::get('/dishes/edit', 'Dishes@loadEditDishView');
-Route::get('/dishes/edit/{id}', 'Dishes@loadEditDishViewById');
-Route::get('/dishes/deletion', 'Dishes@loadDishDeletionView');
+})->middleware('web', 'auth');
 
-Route::post('/dishes/creation', 'Dishes@createDish');
-Route::post('/dishes/edit', 'Dishes@editDish');
-Route::post('/dishes/deletion', 'Dishes@deleteDishById');
+Route::get('/dishes/edit', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@loadEditDishView']);
+Route::get('/dishes/edit/{id}', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@loadEditDishViewById']);
+Route::get('/dishes/deletion', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@loadDishDeletionView']);
+
+Route::post('/dishes/creation', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@createDish']);
+Route::post('/dishes/edit', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@editDish']);
+Route::post('/dishes/deletion', ['middleware' => ['web', 'auth'], 'uses' => 'Dishes@deleteDishById']);
 
 Route::group(['middleware' => ['web']], function () {
 	Route::get('/cart', 'Cart@loadCartView');
 	Route::post('/addtocart/{id}', 'Cart@addToCart');
 	Route::post('/removefromcart/{id}', 'Cart@removeFromCart');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
-Route::group(['middleware' => ['web']], function () {
-
 });
