@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
             	<?php
-            		if (isset($errors)) {
+            		if (isset($errors) && count($errors) > 0) {
             			var_dump($errors);
             		}
             	?>

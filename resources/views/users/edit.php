@@ -20,7 +20,7 @@
 		            		<input type="submit" text="Редактирай">
 		            	</form>
 				<?php           			
-            		} else if (isset($errors)) {
+            		} else if (isset($errors) && count($errors) > 0) {
             			var_dump($errors);
             		}
             	?>

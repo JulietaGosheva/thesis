@@ -39,7 +39,7 @@
 		            		<input type="submit" value="Редактирай">
 		            	</form>
 				<?php            				
-            		} else if (isset($errors)) {
+            		} else if (isset($errors) && count($errors) > 0) {
             			var_dump($errors);
             		}
             	?>

@@ -31,7 +31,7 @@
                 			<input type="submit" value="Поръчай">
             			</form>
             	<?php 
-            		} else if (isset($errors)) {
+            		} else if (isset($errors) && count($errors) > 0) {
             		}
             	?>
             </div>
