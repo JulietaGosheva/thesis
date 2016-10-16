@@ -14,7 +14,7 @@
             			var_dump($errors);
             		}
             	?>
-            	<form action="users/registration" method="POST">
+            	<form action="<?php echo URL::to('/users/registration'); ?>" method="POST">
             		<input type="email" name="email" placeholder="Емайл">
             		<input type="password" name="password" placeholder="Парола">
             		<input type="password" name="confirmed_password" placeholder="Повторете паролата">

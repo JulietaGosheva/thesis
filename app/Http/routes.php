@@ -23,9 +23,13 @@ Route::get('/login', function () {
     return view('login.index');
 });
 
+Route::post('/login', 'Auth\AuthController@authenticate');
+
 Route::get('/registration', function () {
     return view('registration.index');
 });
+
+Route::post('/order', ['middleware' => ['web'], 'uses' => 'Orders@createOrder']);
 
 Route::get('/users/edit', 'Users@loadEditView');
 Route::get('/users/registration', function() {
@@ -35,10 +39,23 @@ Route::get('/users/registration', function() {
 Route::post('/users/edit', 'Users@editUser');
 Route::post('/users/registration', 'Users@createUser');
 
-Route::get('/dishes/view', 'Dishes@loadDishView');
-Route::post('/dishes/create', 'Dishes@createDish');
+Route::get('/dishes/review', 'Dishes@loadDishView');
+Route::get('/dishes/creation', function() {
+	return view('dishes.creation');
+});
+Route::get('/dishes/edit', 'Dishes@loadEditDishView');
+Route::get('/dishes/edit/{id}', 'Dishes@loadEditDishViewById');
+Route::get('/dishes/deletion', 'Dishes@loadDishDeletionView');
+
+Route::post('/dishes/creation', 'Dishes@createDish');
 Route::post('/dishes/edit', 'Dishes@editDish');
-Route::post('/dishes/delete', 'Dishes@deleteDishById');
+Route::post('/dishes/deletion', 'Dishes@deleteDishById');
+
+Route::group(['middleware' => ['web']], function () {
+	Route::get('/cart', 'Cart@loadCartView');
+	Route::post('/addtocart/{id}', 'Cart@addToCart');
+	Route::post('/removefromcart/{id}', 'Cart@removeFromCart');
+});
 
 /*
 |--------------------------------------------------------------------------

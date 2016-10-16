@@ -9,7 +9,7 @@
                     <hr>
             </div>
             <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeIn" data-wow-delay="0.9s">
-                <form action="POST" method="post">
+                <form action="<?php echo URL::to('/login'); ?>" method="POST">
                     <div class="col-md-6 col-sm-6" >
                         <input name="email" type="text" class="form-control" id="name" placeholder="Email">
                     </div>

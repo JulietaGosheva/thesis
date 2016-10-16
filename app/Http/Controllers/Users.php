@@ -7,6 +7,8 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Auth;
+
 use App\User;
 use App\Http\Controllers\Controller;
 
@@ -21,7 +23,7 @@ class Users extends Controller {
 				'firstname' => 'required|min:1|max:255',
 				'lastname' => 'required|min:1|max:255',
 				'phone' => 'required|min:3|max:255',
-		]);;
+		]);
 	
 		if ($validator->fails()) {
 			return view('users.registration', ['errors' => $validator->errors()->all()]);
