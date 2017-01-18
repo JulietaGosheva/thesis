@@ -49,6 +49,11 @@ class Orders extends Controller {
 	}
 	
 	public function listOrders(Request $request, Response $response) {
-		return view('orders.review', ["orders" => Order::all()]);
+		$orders = Order::with('user')->get();
+		foreach ($orders as &$order) {
+			$dishes = DB::table('dishes')->whereIn('id', explode(',', $order->dish_ids));
+			$order->dishes = $dishes;
+		}
+		return view('orders.review', ["orders" => $orders]);
 	}
 }

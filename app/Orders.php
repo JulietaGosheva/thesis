@@ -16,11 +16,11 @@ class Orders extends Model {
 	];
 	
 	function user() {
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User', 'user_id', 'id');
 	}
 	
-	function dishes() {
-		$dishes = DB::table('dishes')->whereIn('id', explode(',', $this->dish_ids));
+	function disheszz() {
+		$dishes = DB::table('dishes')->whereIn('id', explode(',', $dish_ids));
 		
 		return new CustomRelation($dishes);
 	}
