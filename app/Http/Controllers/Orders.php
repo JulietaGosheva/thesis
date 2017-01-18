@@ -27,12 +27,12 @@ class Orders extends Controller {
 			return view('cart.review', ['errors' => $validator->errors()->all()]);
 		}
 	
-		$user = Auth::user();
+		$user = $request->session()->get('user');
 		
 		$ids = implode(',', $data['ids']);
 		
 		$order = Order::create([
-			'user_id' => 1,
+			'user_id' => $user->id,
 			'order_date' => date('mm:dd:YY'),
 			'address' => $data['address'],
 			'dish_ids' => $ids
@@ -48,4 +48,7 @@ class Orders extends Controller {
 		return redirect()->to('/cart');
 	}
 	
+	public function listOrders(Request $request, Response $response) {
+		return view('orders.review', ["orders" => Order::all()]);
+	}
 }

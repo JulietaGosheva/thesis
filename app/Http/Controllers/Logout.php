@@ -11,8 +11,8 @@ use App\Http\Controllers\Controller;
 
 class Logout extends Controller {
 	
-	public function logout() {
-		Auth::logout();
+	public function logout(Request $request) {
+		$request->session()->invalidate();
 		
 		return redirect()->to('');
 	}

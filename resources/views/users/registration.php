@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-                <h1 class="heading">За Нас</h1>
+                <h1 class="heading">Регистрация</h1>
                 <hr>
             </div>
             <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">

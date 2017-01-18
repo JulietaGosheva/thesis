@@ -38,10 +38,10 @@ class Users extends Controller {
 		]);
 
 		if ($user === null) {
-			return view('users.registration', ['errors' => ['Failed to create user.']]);
+			return view('registration.index', ['errors' => ['Failed to create user.']]);
 		}
 		
-		return view('users.registration', ['success' => 'Successfully created user.']);
+		return view('login.index', ['success' => 'Successfully created user.']);
 	}
 	
 	public function editUser(Request $request, Response $response) {

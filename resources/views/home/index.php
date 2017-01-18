@@ -1,13 +1,30 @@
 <?php include_once "/../partials/header.php"; ?>
 <?php include_once "/../partials/head.php"; ?>
+
+<?php 
+
+	function getInternationalizedDishType($dishType) {
+		if ($dishType === "Main") {
+			return "Основно";
+		} else if ($dishType === "Soup") {
+			return "Супа";
+		} else if ($dishType === "Dessert") {
+			return "Десерт";
+		} else if ($dishType === "Salat") {
+			return "Салата";
+		}
+	}
+
+?>
+
 <!-- home section -->
 <section id="home" class="parallax-section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<h1>ZENTRO RESTAURANT</h1>
-				<h2>CLEAN &amp; SIMPLE DESIGN</h2>
-				<a href="#gallery" class="smoothScroll btn btn-default">LEARN MORE</a>
+				<h1>FooDZone</h1>
+				<h2>Поръчай бързо храна за вкъщи</h2>
+				<a href="<?php echo URL::to('about_us'); ?>" class="smoothScroll btn btn-default">ПРОЧЕТИ ПОВЕЧЕ</a>
 			</div>
 		</div>
 	</div>		
@@ -18,117 +35,48 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-				<h1 class="heading">Food Gallery</h1>
+				<h1 class="heading">Галерия</h1>
 				<hr>
 			</div>
 			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-				<a href="images/gallery-img1.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/gallery-img1.jpg" alt="gallery img"></a>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[0]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[0]->image_name); ?>" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Prawn</h3>
-					<span>Seafood / Shrimp / Lemon</span>
+					<h3><?php echo $dishes[0]->name; ?></h3>
+					<span><?php echo $dishes[0]->name; ?> / <?php echo getInternationalizedDishType($dishes[0]->type); ?> / <?php echo $dishes[0]->price . 'лв.'; ?></span>
 				</div>
-				<a href="images/gallery-img2.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/gallery-img2.jpg" alt="gallery img"></a>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[1]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[1]->image_name); ?>" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Vegetables</h3>
-					<span>Tomato / Rosemary / Lemon</span>
+					<h3><?php echo $dishes[1]->name; ?></h3>
+					<span><?php echo $dishes[1]->name; ?> / <?php echo getInternationalizedDishType($dishes[1]->type); ?> / <?php echo $dishes[1]->price . 'лв.'; ?></span>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<a href="images/gallery-img3.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/gallery-img3.jpg" alt="gallery img"></a>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[2]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[2]->image_name); ?>" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Bakery</h3>
-					<span>Bread / Rosemary / Orange</span>
+					<h3><?php echo $dishes[2]->name; ?></h3>
+					<span><?php echo $dishes[2]->name; ?> / <?php echo getInternationalizedDishType($dishes[2]->type); ?> / <?php echo $dishes[2]->price . 'лв.'; ?></span>
+				</div>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[3]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[3]->image_name); ?>" alt="gallery img"></a>
+				<div>
+					<h3><?php echo $dishes[3]->name; ?></h3>
+					<span><?php echo $dishes[3]->name; ?> / <?php echo getInternationalizedDishType($dishes[3]->type); ?> / <?php echo $dishes[3]->price . 'лв.'; ?></span>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
-				<a href="images/gallery-img4.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/gallery-img4.jpg" alt="gallery img"></a>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[4]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[4]->image_name); ?>" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Salad</h3>
-					<span>Chicken / Rosemary / Green</span>
+					<h3><?php echo $dishes[4]->name; ?></h3>
+					<span><?php echo $dishes[4]->name; ?> / <?php echo getInternationalizedDishType($dishes[4]->type); ?> / <?php echo $dishes[4]->price . 'лв.'; ?></span>
 				</div>
-				<a href="images/gallery-img5.jpg" data-lightbox-gallery="zenda-gallery"><img src="images/gallery-img5.jpg" alt="gallery img"></a>
+				<a href="<?php echo URL::to('../resources/assets/images/' . $dishes[5]->image_name); ?>" data-lightbox-gallery="zenda-gallery"><img src="<?php echo URL::to('../resources/assets/images/' . $dishes[5]->image_name); ?>" alt="gallery img"></a>
 				<div>
-					<h3>Lemon-Rosemary Pizza</h3>
-					<span>Pasta / Rosemary / Green</span>
+					<h3><?php echo $dishes[5]->name; ?></h3>
+					<span><?php echo $dishes[5]->name; ?> / <?php echo getInternationalizedDishType($dishes[5]->type); ?> / <?php echo $dishes[5]->price . 'лв.'; ?></span>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
-
-<!-- menu section -->
-<section id="menu" class="parallax-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-				<h1 class="heading">Special Menu</h1>
-				<hr>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Vegetable ................ <span>$20.50</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Meat ........................... <span>$30.50</span></h4>
-				<h5>Meat / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Pork ........................ <span>$40.75</span></h4>
-				<h5>Pork / Tooplate / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Salad .......................... <span>$55.00</span></h4>
-				<h5>Salad / Rosemary / Orange</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Squid ...................... <span>$65.00</span></h4>
-				<h5>Squid / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Orange-Rosemary Shrimp ........................ <span>$70.50</span></h4>
-				<h5>Shrimp / Rosemary / Orange</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Prawn ................... <span>$110.75</span></h4>
-				<h5>Chicken / Rosemary / Lemon</h5>
-			</div>
-			<div class="col-md-6 col-sm-6">
-				<h4>Lemon-Rosemary Seafood ..................... <span>$220.50</span></h4>
-				<h5>Seafood / Rosemary / Lemon</h5>
-			</div>
-		</div>
-	</div>
-</section>		
-
-
-<!-- team section -->
-<section id="team" class="parallax-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-				<h1 class="heading">Meet Zentro chefs</h1>
-				<hr>
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
-				<img src="images/team1.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Thanya</h4>
-				<h3>Main Chef</h3>
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<img src="images/team2.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Lynda</h4>
-				<h3>Pizza Specialist</h3>
-			</div>
-			<div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
-				<img src="images/team3.jpg" class="img-responsive center-block" alt="team img">
-				<h4>Jenny Ko</h4>
-				<h3>New Baker</h3>
-			</div>
-		</div>
-	</div>
-</section>
-
 
 <!-- contact section -->
 <section id="contact" class="parallax-section">
@@ -158,4 +106,5 @@
 		</div>
 	</div>
 </section>
+
 <?php include_once "/../partials/footer.php"; ?>

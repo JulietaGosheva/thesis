@@ -23,9 +23,20 @@ class AuthController extends Controller {
 
     public function authenticate(Request $request, Response $response) {
     	if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+    		$this->markAuthenticationAsPassed($request);
+    		$this->addAuthenticatedUserToSession($request);
     		return redirect()->intended('');
     	}
 
     	return view('login.index', ['errors' => ['Login failed.']]);
+    }
+    
+    //Workaround since Auth::attempt doesn't 'persist' authentication state
+    private function markAuthenticationAsPassed(Request $request) {
+    	$request->session()->put('authentication', 'passed');
+    }
+    
+    private function addAuthenticatedUserToSession(Request $request) {
+    	$request->session()->put('user', Auth::user());
     }
 }

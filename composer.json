@@ -25,7 +25,10 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "database/seeds/RolesSeeder.php",
+            "database/seeds/UsersSeeder.php",
+            "database/seeds/UsersToRolesSeeder.php"
         ]
     },
     "scripts": {
