@@ -33,7 +33,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-            	<?php 
+            	<?php
+            		if (isset($_GET['success']) && $_GET['success'] === "true") { ?>
+            			<div class="alert alert-success alert-dismissible" role="alert" style="text-align: center">
+            	        	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            	            <strong>Успешно добавихте ястието към кошницата</strong> 
+						</div>
+					<?php 
+            	    } else if (isset($_GET['failed']) && $_GET['failed'] === "true") { ?>
+            	    	<div class="alert alert-warning alert-dismissible" role="alert" style="text-align: center">
+            	    		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            	    		<strong>Продукта е вече добавен към вашата количка</strong>
+            	    	</div>
+            	    <?php
+            	    }
+            	            
             		if (isset($dishes)) {
             			
             			$mains = array();

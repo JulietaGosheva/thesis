@@ -12,6 +12,7 @@ class CreateOrdersTable extends Migration {
 			$table->date("order_date");
 			$table->string("dish_ids");
             $table->string('address');
+            $table->string('processed')->default("false");
         });
     }
 

@@ -28,14 +28,16 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
+//     'confirmed'            => 'The :attribute confirmation does not match.',
+	'confirmed'            => ':attribute не съвпадат.',
     'date'                 => 'The :attribute is not a valid date.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
     'digits'               => 'The :attribute must be :digits digits.',
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'The :attribute must be a valid email address.',
+    'email'                => 'Невалиден имейл.',
+//     'email'                => 'The :attribute must be a valid email address.',
     'exists'               => 'The selected :attribute is invalid.',
     'filled'               => 'The :attribute field is required.',
     'image'                => 'The :attribute must be an image.',
@@ -54,14 +56,17 @@ return [
     'min'                  => [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
+//         'string'  => 'The :attribute must be at least :min characters.',
+    	'string'  => ':attribute трябва да бъде минимум :min символа.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',
     'present'              => 'The :attribute field must be present.',
-    'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'The :attribute field is required.',
+//     'regex'                => 'The :attribute format is invalid.',
+	'regex'                => 'Формата на :attribute е невалиден.',
+//     'required'             => 'The :attribute field is required.',
+	'required'             => 'Полето за :attribute не може да бъде празно.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
@@ -93,8 +98,13 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'rule-name' => 'custom-message'
         ],
+    	'password' => [
+    		'required' => 'Полето за паролата не може да бъде празно',
+    		'min' => 'Паролата трябва да бъде минимум 8 символа',
+    		'confirmed' => 'Паролите не съвпадат'
+    	]
     ],
 
     /*
@@ -108,6 +118,18 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+    	'email' => 'имейл',
+    	'firstname' => 'име',
+    	'lastname' => 'фамилия',
+    	'phone' => 'телефонния номер',
+    	'name' => 'име на ястие',
+    	'weight' => 'грамаж',
+    	'file' => 'файл',
+    	'price' => 'цена',
+		'type' => 'тип',
+    	'quantities' => 'бройка',
+    	'address' => 'адрес на поръчка'
+    ],
 
 ];

@@ -38,7 +38,7 @@ class Dishes extends Controller {
 		if ($file->isValid() === false) {
 			DB::rollBack();
 		
-			return view('dishes.creation', ['errors' => ['Invalid file']]);
+			return view('dishes.creation', ['errors' => ['Невалиден файл.']]);
 		}
 		
 		$imageName = round(microtime(true) * 1000) . "." . $file->getClientOriginalExtension();
@@ -63,12 +63,12 @@ class Dishes extends Controller {
 		if ($dish === null) {
 			DB::rollBack();
 
-			return view('dishes.creation', ['errors' => ['Failed to create dish.']]);
+			return view('dishes.creation', ['errors' => ['Неуспешно създаване на ястие.']]);
 		}
 
 		DB::commit();
 		
-		return view('dishes.creation', ['success' => 'Successfully created dish.']);
+		return view('dishes.creation', ['success' => 'Успешно създаване на ястие.']);
 	}
 
 	public function editDish(Request $request, Response $response) {
@@ -101,7 +101,7 @@ class Dishes extends Controller {
 			if ($file->isValid() === false) {
 				DB::rollBack();
 			
-				return view('dishes.creation', ['errors' => ['Invalid file']]);
+				return view('dishes.creation', ['errors' => ['Невалиден файл.']]);
 			}
 			
 			$imageName = round(microtime(true) * 1000) . "." . $file->getClientOriginalExtension();
@@ -126,7 +126,7 @@ class Dishes extends Controller {
 			if ($queryResult === 0) {
 				DB::rollBack();
 				
-				return view('dishes.edit', ['errors' => ['Failed to update user.']]);
+				return view('dishes.edit', ['errors' => ['Неуспешно редактиране на ястие.']]);
 			}
 		} catch (Exception $exception) {
 			DB::rollBack();
@@ -136,7 +136,7 @@ class Dishes extends Controller {
 		
 		DB::commit();
 
-		return view('dishes.edit', ['success' => 'Successfully updated user.']);
+		return view('dishes.edit', ['success' => 'Успешно редактиране на ястие.']);
 	}
 	
 	public function loadEditDishView(Request $request, Response $response) {
@@ -161,16 +161,16 @@ class Dishes extends Controller {
 		$dish = $this->findDishById($data['id']);
 		
 		if ($dish === null) {
-			return view('dishes.deletion', ['errors' => ['Failed to find the dish.']]);
+			return view('dishes.deletion', ['errors' => ['Ястието не беше открито.']]);
 		}
 		
 		$deletedRows = $dish->delete();
 		
 		if ($deletedRows === 0) {
-			return view('dishes.deletion', ['errors' => ['Failed to delete dish.']]);
+			return view('dishes.deletion', ['errors' => ['Неуспешно изтриване на ястие.']]);
 		}
 		
-		return view('dishes.deletion', ['success' => 'Successfully deleted dish.']);
+		return view('dishes.deletion', ['success' => 'Успешно изтрито ястие.']);
 	}
 
 	public function loadDishDeletionView(Request $request, Response $response) {

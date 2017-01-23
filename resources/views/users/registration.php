@@ -11,7 +11,13 @@
             <div class="col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.3s">
             	<?php
             		if (isset($errors) && count($errors) > 0) {
-            			var_dump($errors);
+            			foreach ($errors as $error) { ?>
+	            			<div class="alert alert-danger alert-dismissible" role="alert" style="text-align: center">
+							  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  	<strong><?php echo $error; ?></strong> 
+							</div>
+	            		<?php 
+            			}
             		}
             	?>
             	<form action="<?php echo URL::to('/users/registration'); ?>" method="POST">

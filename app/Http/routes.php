@@ -35,7 +35,10 @@ Route::get('/logout', ['middleware' => ['web'], 'uses' => 'Logout@logout']);
 
 Route::post('/order', ['middleware' => ['web', 'auth'], 'uses' => 'Orders@createOrder']);
 
-Route::get('/users/edit', ['middleware' => ['web', 'auth', 'admin.authz'], 'uses' => 'Users@loadEditView']);
+Route::post('/process/order/{id}', ['middleware' => ['web', 'auth', 'admin.authz'], 'uses' => 'Orders@markOrderAsProcessed']);
+Route::delete('/process/order/{id}', ['middleware' => ['web', 'auth', 'admin.authz'], 'uses' => 'Orders@markOrderAsNotProcessed']);
+
+Route::get('/users/edit', ['middleware' => ['web', 'auth'], 'uses' => 'Users@loadEditView']);
 Route::get('/users/registration', function() {
 	return view('users.registration');
 })->middleware(['web', 'auth', 'admin.authz']);

@@ -11,7 +11,19 @@
             <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
             	<?php 
             		if (isset($errors) && count($errors) > 0) {
-            			var_dump($errors);
+            			foreach ($errors as $error) { ?>
+	            			<div class="alert alert-danger alert-dismissible" role="alert" style="text-align: center">
+							  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  	<strong><?php echo $error; ?></strong> 
+							</div>
+	            		<?php 
+            			}
+            		} else if (isset($success) && count($success) > 0) { ?>
+            			<div class="alert alert-success alert-dismissible" role="alert" style="text-align: center">
+						  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  	<strong><?php echo $success; ?></strong> 
+						</div>
+            		<?php 
             		}
             	?>
             	<form class="col-sm-offset-3 col-sm-6" action="<?php echo URL::to('dishes/creation'); ?>" method="POST" enctype="multipart/form-data">

@@ -61,8 +61,10 @@
 						<li><a href="<?php echo URL::to(''); ?>" class="smoothScroll">НАЧАЛО</a></li>
 						<li><a href="<?php echo URL::to('about_us'); ?>" class="smoothScroll">ЗА НАС</a></li>
 						<li><a href="<?php echo URL::to('dishes/review'); ?>" class="smoothScroll">ЯСТИЯ</a></li>
-						<li><a href="#contact" class="smoothScroll">КОНТАКТИ</a></li>
-						<li><a href="<?php echo URL::to('/cart'); ?>" class="smoothScroll">КОЛИЧКА</a></li>
+						<li><a href="<?php echo URL::to('/cart'); ?>" class="smoothScroll"><span class="fa fa-shopping-cart"></span> КОЛИЧКА</a></li>
+						<?php if (isUserLoggedIn()) { ?>
+							<li><a href="<?php echo URL::to('users/edit'); ?>" class="smoothScroll">РЕДАКТИРАНЕ НА ПРОФИЛА</a></li>
+						<?php }?>
 					<?php
 					}
 					

@@ -7,7 +7,7 @@ class UsersSeeder extends Seeder {
 	public function run() {
         DB::table('users')->insert([
             'email' => 'administrator@gmail.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('passwordsalt'),
         	'firstname' => 'Super',
         	'lastname' => 'Administrator',
         	'phone' => '0888888888'

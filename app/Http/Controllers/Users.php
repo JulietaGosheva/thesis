@@ -19,60 +19,60 @@ class Users extends Controller {
 		
 		$validator = Validator::make($data, [
 				'email' => 'required|email|max:255|unique:users',
-				'password' => 'required|min:6',
+				'password' => 'required|min:8|confirmed',
 				'firstname' => 'required|min:1|max:255',
 				'lastname' => 'required|min:1|max:255',
-				'phone' => 'required|min:3|max:255',
+				'phone' => 'required|min:10|regex:/^\+?\d+$/',
 		]);
 	
 		if ($validator->fails()) {
-			return view('users.registration', ['errors' => $validator->errors()->all()]);
+			return view('registration.index', ['errors' => $validator->errors()->all()]);
 		}
 	
 		$user = User::create([
 			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
+			'password' => bcrypt($data['password'] . "salt"),
 			'firstname' => $data['firstname'],
 			'lastname' => $data['lastname'],
 			'phone' => $data['phone']
 		]);
 
 		if ($user === null) {
-			return view('registration.index', ['errors' => ['Failed to create user.']]);
+			return view('registration.index', ['errors' => ['Неуспешно създаване на профил, моля да ни извините.']]);
 		}
 		
-		return view('login.index', ['success' => 'Successfully created user.']);
+		return view('login.index', ['success' => 'Успешна регистрация.']);
 	}
 	
 	public function editUser(Request $request, Response $response) {
 		$validator = Validator::make($request->all(), [
-				'id' => 'required|numeric',
 				'email' => 'required|email|max:255',
-				'password' => 'required|min:6',
+				'password' => 'required|confirmed|min:8',
 				'firstname' => 'required|min:1',
 				'lastname' => 'required|min:1',
-				'phone' => 'required|min:3',
+				'phone' => 'required|min:10|regex:/^\+?\d+$/',
 		]);
 		
 		if ($validator->fails()) {
 			return view('users.edit', ['errors' => $validator->errors()->all()]);
 		}
 		
+		$user = Auth::user();
 		$data = $request->all();
 		
-		$queryResult = User::where("id", $data['id'])->update([
+		$queryResult = User::where("id", $user->id)->update([
 				"email" => $data['email'],
-				"password" => bcrypt($data['password']),
+				"password" => bcrypt($data['password']. "salt"),
 				"firstname" => $data['firstname'],
 				"lastname" => $data['lastname'],
 				"phone" => $data['phone']
 		]);
 		
-		if ($queryResult > 0) {
-			return view('users.edit', ['errors' => ['Failed to update user']]);
+		if ($queryResult === 0) {
+			return view('users.edit', ['errors' => ['Неуспешно редактиране на потребителските данни.']]);
 		}
 		
-		return view('users.edit', ['success' => 'Successfully updated user.']);
+		return view('users.edit', ['success' => 'Успешно редактиране на потребителските данни.']);
 	}
 	
 	public function loadEditView() {

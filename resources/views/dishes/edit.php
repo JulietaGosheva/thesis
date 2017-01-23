@@ -42,7 +42,21 @@
             
             <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
             	<?php 
-            		if (isset($dishes)) {
+					if (isset($errors) && count($errors) > 0) {
+            			foreach ($errors as $error) { ?>
+	            			<div class="alert alert-danger alert-dismissible" role="alert" style="text-align: center">
+							  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  	<strong><?php echo $error; ?></strong> 
+							</div>
+	            		<?php 
+            			}
+            		} else if (isset($success) && count($success) > 0) { ?>
+            			<div class="alert alert-success alert-dismissible" role="alert" style="text-align: center">
+						  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  	<strong><?php echo $success; ?></strong> 
+						</div>
+            		<?php 
+            		} else if (isset($dishes)) {
             			
             			$mains = array();
             			$soups = array();

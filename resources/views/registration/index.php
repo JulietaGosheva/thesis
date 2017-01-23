@@ -9,6 +9,17 @@
                     <hr>
             </div>
             <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeIn" data-wow-delay="0.9s">
+            	<?php 
+            		if (isset($errors) && count($errors) > 0) {
+            			foreach ($errors as $error) { ?>
+	            			<div class="alert alert-danger alert-dismissible" role="alert" style="text-align: center">
+							  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  	<strong><?php echo $error; ?></strong> 
+							</div>
+	            		<?php 
+            			}
+            		}
+            	?>
                 <form action="<?php echo URL::to('users/registration'); ?>" method="POST">
                     <div class="col-md-6 col-sm-6">
                         <input name="email" type="text" class="form-control" placeholder="Email">
@@ -26,7 +37,7 @@
                         <input name="password" type="password" class="form-control" placeholder="Парола">
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <input name="password" type="password" class="form-control" placeholder="Повторете паролата">
+                        <input name="password_confirmation" type="password" class="form-control" placeholder="Повторете паролата">
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
                         <input name="submit" type="submit" class="form-control" id="submit" value="Регистрация">
