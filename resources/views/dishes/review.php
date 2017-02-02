@@ -13,7 +13,9 @@
 			      	<div class="caption" style="min-height: 200px;">
 			        	<h3 style="text-align: center"><?php echo $dishes[$i]->name; ?></h3>
 			        	<p style="text-overflow: ellipsis;"><?php echo $dishes[$i]->description; ?></p>
-			        	
+			        	<p style="margin-bottom: 0px;">Цена: <b><?php echo $dishes[$i]->price; ?> лв.</b></p>
+						<p style="margin-bottom: 0px;">Грамаж: <b><?php echo $dishes[$i]->weight; ?></b> гр.</p>
+			        	<br>
 			        	<div style="position: absolute; bottom: 0px; min-width: 95%;">
 				        	<form action="<?php echo URL::to('/addtocart') . '/' . $dishes[$i]->id; ?>" method="POST">
 				            	<input type="hidden" name="id" value="<?php echo $dishes[$i]->id; ?>">
