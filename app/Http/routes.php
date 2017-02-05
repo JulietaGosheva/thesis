@@ -33,6 +33,10 @@ Route::get('/registration', function () {
 
 Route::get('/logout', ['middleware' => ['web'], 'uses' => 'Logout@logout']);
 
+Route::get('/order', function() {
+	return redirect()->guest('cart');
+})->middleware(['web']);
+
 Route::post('/order', ['middleware' => ['web', 'auth'], 'uses' => 'Orders@createOrder']);
 
 Route::post('/process/order/{id}', ['middleware' => ['web', 'auth', 'admin.authz'], 'uses' => 'Orders@markOrderAsProcessed']);
